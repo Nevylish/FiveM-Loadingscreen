@@ -1,99 +1,97 @@
-
-  @import url("bootstrap.css");
-  @import url("http://fonts.googleapis.com/css?family=Open+Sans:700italic,800,700,300,400&subset=latin,latin-ext");
-  @import url("font-awesome.min.css");
-  @import url("owl.carousel.css");
-
-
+@import url("bootstrap.css");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:700italic,800,700,300,400&subset=latin,latin-ext");
 
 /* 2. BASIC STYLES */
 
-  * {
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+* {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-  html, body {
-    height: 100%;
-  }
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
 
-  body {
-    font: 16px/1.5 'Open Sans', "Century Gothic", "Trebuchet MS", Helvetica, sans-serif;
-    background-color: #262626;
-    color: #fff;
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
+html, body {
+  height: 100%;
+}
 
-  a { 
-    color: #ed5565;
-    transition: all 0.125s ease-in-out 0s;
-    -moz-transition: all 0.125s ease-in-out 0s;
-    -webkit-transition: all 0.125s ease-in-out 0s;
-    -o-transition: all 0.125s ease-in-out 0s;
-    -ms-transition: all 0.125s ease-in-out 0s;
-  }
+body {
+  font: 14px/1.5 'Open Sans', "Century Gothic", "Trebuchet MS", Helvetica, sans-serif;
+  background-color: #262626;
+  color: #fff;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden; 
+}
 
-
-
-
+a { 
+  color: #ed5565;
+  transition: all 0.125s ease-in-out 0s;
+  -moz-transition: all 0.125s ease-in-out 0s;
+  -webkit-transition: all 0.125s ease-in-out 0s;
+  -o-transition: all 0.125s ease-in-out 0s;
+  -ms-transition: all 0.125s ease-in-out 0s;
+}
 
 /* 5. HEADER */
 
-  header {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    background-color: transparent;
-  }
-  
-  header > .container {
-    height: 100%;
-    position: relative;
-  }
+header {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: transparent;
+}
 
-  .wrapper {
-    width: 100%;
-    height: auto;
-    position: relative;
-    top: 50%;
-  }
+header > .container {
+  height: 100%;
+  position: relative;
+}
 
-  body
-{
+.wrapper {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: 50%;
+}
+
+body {
     margin: 0px;
     padding: 0px;
     
-	background-size: 0%;
+	  background-size: 0%;
 
-	font-family: "Segoe UI", sans-serif;
-
+	  font-family: "Segoe UI", sans-serif;
 }
 
+.player {
+    height: 100%;
+    right: 0%;
+    z-index: 1;
+    transition: 0.2s;
+}
 
-.log
-{
+.log {
     color: rgba(255, 255, 255, 0.79);
     position: absolute;
     left: 20px;
     top: 20px;
 }
 
-.log-top-right
-{
+.log-top-right {
     top: 20px;
     right: 20px;
     text-align: right;
     display: none;
 }
 
-.loading-container
-{
+.loading-container {
     position: absolute;
     left: 5%;
     right: 5%;
@@ -106,8 +104,7 @@
     font-family: Arial;
 }
 
-.loading-labels
-{
+.loading-labels {
     width: 100%;
     height: 20px;
 
@@ -124,16 +121,14 @@
     white-space: nowrap;
 }
 
-.loading-labels div
-{
+.loading-labels div {
     display: none;
     text-align: left;
     font-size: 18px;
     position: relative;
 }
 
-.loading-bar-container
-{
+.loading-bar-container {
     width: 100%;
     background-color: rgba(190, 140, 110, .9);
     height: 30px;
@@ -156,15 +151,14 @@
     white-space: nowrap;
 }
 
-.loading-bar
-{
+.loading-bar {
     width: 0%;
     height: 20px;
     border-radius: 2px;
 
     background-size: 30px 30px;      
     background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-    -webkit-animation: animate-stripes 3s linear infinite;
+    animation: animate-stripes 3s linear infinite;
 
     display: none;
 
@@ -172,81 +166,26 @@
     transition-timing-function: ease-out;
 }
 
-.bgcolor-first 
-{
-    background-color: #c2869f;
-    
+.bgcolor-first {
+    background-color: #f56b48; 
 }
 
-.bgcolor-second 
-{
-    background-color: #c2869f;
+.bgcolor-second {
+    background-color: #eb649c;
 }
 
-.bgcolor-third 
-{
-    background-color: #c2869f;
+.bgcolor-third {
+    background-color: #57abd1;
 }
 
-.bgcolor-fourth 
-{
-    background-color: #c2869f;
+.bgcolor-fourth {
+    background-color: #59af3f;
 }
 
-
-.color-first 
-{
+.color-first, .color-second, .color-third, .color-fourth {
     color: #fcfcfc;
-}
-
-.color-second 
-{
-    color: #fcfcfc;
-}
-
-.color-third 
-{
-    color: #fcfcfc;
-}
-
-.color-fourth 
-{
-    color: #fcfcfc;
-}
-
-.logo
-{
-position: absolute;
-top: -5px;
-left: 1770px;
-}
-
-.enable_music {
-  color: #e7e7e7;
-  font-family: 'Raleway', sans-serif;
-  text-align: center;
-
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  font-weight: 400;
-
-  margin: 15px auto;
-  animation: music 3s;
 }
 
 @keyframes animate-stripes {
     0% {background-position: 0 0;} 100% {background-position: 60px 0;}
-}
-
-@keyframes music {
-  from {
-      opacity: 0.1;
-      transform: translateY(-80px);
-  }
-
-  to { 
-      transform: translateY(0px);
-  }
 }
