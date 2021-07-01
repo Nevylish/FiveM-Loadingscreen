@@ -1,5 +1,5 @@
 # FiveM-Loadingscreen
-FiveM - NUI Loading screen with loading bar, logs & YouTube vidéo background
+NUI Loading screen with loading bar, logs & YouTube vidéo background
 
 ![Screenshot_1](https://user-images.githubusercontent.com/36775882/124135094-c6741780-da83-11eb-903a-9af01ba24cd7.png)
 
