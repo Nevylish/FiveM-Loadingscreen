@@ -4,8 +4,9 @@ FiveM - Loadingscreen with loading bar & YouTube vidéo background
 
 ### Demo website
 
-- https://nevylish.github.io/FiveM-Loadingscreen/
+- https://nevylish.github.io/FiveM-Loadingscreen
 
-### Original README.md
+### Author: [Akashite](https://github.com/Akashite)
 
-- [Akashite/LoadingscreenAk](https://github.com/Akashite/LoadingscreenAk/blob/master/README.md)
+- [Author repository](https://github.com/Akashite/LoadingscreenAk)
+- [Author README](https://github.com/Akashite/LoadingscreenAk/blob/master/README.md)
