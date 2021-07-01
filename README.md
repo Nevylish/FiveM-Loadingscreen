@@ -4,7 +4,7 @@ FiveM - Loadingscreen with loading bar & YouTube vidéo background
 
 ## Demo website
 - https://nevylish.github.io/FiveM-Loadingscreen | <b>Enable full screen</b> (F11)
-- 
+
 ## Installation
 - [Download Source Code](https://github.com/Nevylish/FiveM-Loadingscreen/archive/refs/heads/master.zip)
 - Unzip folder and paste into /resources directory
