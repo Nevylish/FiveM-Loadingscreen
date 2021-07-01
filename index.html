@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>FiveM-Loadingscreen</title>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    
-
 </head>
 <body>
     <div id="background"></div>   
@@ -246,7 +244,7 @@
         }
     };
 
-    setInterval(function(){document.querySelector('#log').innerHTML = gstate.log.slice(-10).map(function(e){return String.format("[{0}] {1}", e.type, e.str)}).join('<br />');}, 100);
+    setInterval(function(){document.querySelector('#log').innerHTML = gstate.log.slice(-5).map(function(e){return String.format("[{0}] {1}", e.type, e.str)}).join('<br />');}, 50);
     
     window.addEventListener('message', function(e) {
         (handlers[e.data.eventName] || function() {})(e.data);
