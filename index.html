@@ -36,7 +36,7 @@
                     list: playlistCode,
                 },
                 events: {
-                    'onReady': (event) => {
+                    'onReady': function(event) {
                         event.target.setShuffle({'shufflePlaylist': true});
                     }
                 }
@@ -244,14 +244,77 @@
         onLogLine(data) {
             printLog(3, data.message);
         }
+        
     };
+
+    if (!window.invokeNative) {
+
+    let newType = function newType(name) {
+        return function () {
+            return handlers.startInitFunction({ type: name });
+        };
+    }, newType2 = function newType(name) {
+        return function () {
+            return handlers.startInitFunction2({ type: name });
+        };
+    }, newType3 = function newType(name) {
+        return function () {
+            return handlers.startInitFunction3({ type: name });
+        };
+    }, newOrder = function newOrder(name, idx, count) {
+        return function () {
+            return handlers.startInitFunctionOrder({ type: name, order: idx, count: count });
+        };
+    }, newInvoke = function newInvoke(name, func, i) {
+        return function () {
+            handlers.initFunctionInvoking({ type: name, name: func, idx: i });handlers.initFunctionInvoked({ type: name });
+        };
+    }, startEntries = function startEntries(count) {
+        return function () {
+            return handlers.startDataFileEntries({ count: count });
+        };
+    }, addEntry = function addEntry() {
+        return function () {
+            return handlers.onDataFileEntry({ name: 'meow', isNew: true });
+        };
+    }, stopEntries = function stopEntries() {
+        return function () {
+            return handlers.endDataFileEntries({});
+        };
+    }, newTypeWithOrder = function newTypeWithOrder(name, count) {
+        return function () {
+            newType(name)();newOrder(name, 1, count)();
+        };
+    };
+
+    const demoFuncs = [
+        newTypeWithOrder('MAP', 5),
+        newInvoke('MAP', 'meow1', 1),
+        newInvoke('MAP', 'meow2', 2),
+        newInvoke('MAP', 'meow3', 3),
+        newInvoke('MAP', 'meow4', 4),
+        newInvoke('MAP', 'meow5', 5),
+        newOrder('MAP', 2, 2),
+        newInvoke('MAP', 'meow1', 1),
+        newInvoke('MAP', 'meow2', 2),
+        newTypeWithOrder('INIT_SESSION', 4),
+        newInvoke('INIT_SESSION', 'meow1', 1),
+        newInvoke('INIT_SESSION', 'meow2', 2),
+        newInvoke('INIT_SESSION', 'meow3', 3),
+        newInvoke('INIT_SESSION', 'meow4', 4),
+        newType3('-- <b>ENABLE FULL SCREEN (F11)</b> --'),
+        newType3('<b>Repository: https://github.com/Nevylish/FiveM-Loadingscreen</b>'),
+        newType3('<b>Demo website: https://nevylish.github.io/FiveM-Loadingscreen</b>'),
+    ];
+
+    setInterval(function(){	demoFuncs.length && demoFuncs.shift()();}, Math.random() * (400 - 200) + 200);
 
     setInterval(function(){document.querySelector('#log').innerHTML = gstate.log.slice(-5).map(function(e){return String.format("[{0}] {1}", e.type, e.str)}).join('<br />');}, 100);
 
     window.addEventListener('message', function(e) {
         (handlers[e.data.eventName] || function() {})(e.data);
-    });
-
+    })};
+    
     </script>
 </body>
 </html>
