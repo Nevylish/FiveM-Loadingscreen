@@ -77,6 +77,10 @@
     const technicalNames = ["INIT_BEFORE_MAP_LOADED", "MAP", "INIT_AFTER_MAP_LOADED", "INIT_SESSION"];
     let currentLoadingStage = 0;
     let loadingWeights = [1.3/10, 4.2/10, 1.5/10, 3/10];
+    
+    if (!window.invokeNative) {
+        loadingWeights[3] = 47.5/10
+    }
 
     let loadingTotals = [70, 70, 70, 220];
     let registeredTotals = [0, 0, 0, 0];
