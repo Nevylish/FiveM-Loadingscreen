@@ -1,191 +1,156 @@
-@import url("bootstrap.css");
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:700italic,800,700,300,400&subset=latin,latin-ext");
-
-/* 2. BASIC STYLES */
-
-* {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
-}
 
 html, body {
   height: 100%;
 }
 
 body {
+  margin: 0px;
+  padding: 0px;
+  
+  background-size: 0%;
+
   font: 14px/1.5 'Open Sans', "Century Gothic", "Trebuchet MS", Helvetica, sans-serif;
-  background-color: #262626;
-  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+
+  width: 100%;
+  height: 100%;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow: hidden; 
-}
-
-a { 
-  color: #ed5565;
-  transition: all 0.125s ease-in-out 0s;
-  -moz-transition: all 0.125s ease-in-out 0s;
-  -webkit-transition: all 0.125s ease-in-out 0s;
-  -o-transition: all 0.125s ease-in-out 0s;
-  -ms-transition: all 0.125s ease-in-out 0s;
-}
-
-/* 5. HEADER */
-
-header {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
   position: relative;
   background-color: transparent;
 }
 
-header > .container {
-  height: 100%;
-  position: relative;
-}
-
-.wrapper {
-  width: 100%;
-  height: auto;
-  position: relative;
-  top: 50%;
-}
-
-body {
-    margin: 0px;
-    padding: 0px;
-    
-	  background-size: 0%;
-
-	  font-family: "Segoe UI", sans-serif;
-}
-
 .player {
-    height: 100%;
-    right: 0%;
-    z-index: 1;
-    transition: 0.2s;
+  height: 100%;
+  right: 0%;
+  z-index: 1;
+  transition: 0.2s;
 }
 
 .log {
-    color: rgba(255, 255, 255, 0.79);
-    position: absolute;
-    left: 20px;
-    top: 20px;
+  color: rgba(255, 255, 255);
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  opacity: 0.79;
 }
 
 .log-top-right {
-    top: 20px;
-    right: 20px;
-    text-align: right;
-    display: none;
+  top: 20px;
+  right: 20px;
+  text-align: right;
+  display: none;
+}
+
+.logo {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  opacity: 0.7;
+  border-radius: 4%;
+}
+
+.log-top-right {
+  top: 20px;
+  right: 20px;
+  text-align: right;
+  display: none;
 }
 
 .loading-container {
-    position: absolute;
-    left: 5%;
-    right: 5%;
-    bottom: 4%;
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 3%;
 
-    z-index: 5;
+  z-index: 5;
 
-    color: rgba(255, 255, 255);
+  color: #fff;
 
-    font-family: Arial;
+  font-family: Arial;
 }
 
 .loading-labels {
-    width: 100%;
-    height: 20px;
+  width: 100%;
+  height: 20px;
 
-    margin-left: 2px;
-    margin-right: 3px;
+  margin-left: 2px;
+  margin-right: 3px;
 
-    margin-top: 5px;
-    margin-bottom: 12px;
+  margin-top: 5px;
+  margin-bottom: 12px;
 
-    padding: 3px;
-    text-align: center;
-    position: relative;
-    display: inline;
-    white-space: nowrap;
+  padding: 4.2px;
+  text-align: center;
+  display: inline;
+  white-space: nowrap;
 }
 
 .loading-labels div {
-    display: none;
-    text-align: left;
-    font-size: 18px;
-    position: relative;
+  display: none;
+  text-align: left;
+  font-size: 18px;
+  position: relative;
 }
 
 .loading-bar-container {
-    width: 100%;
-    background-color: rgba(190, 140, 110, .9);
-    height: 30px;
+  width: 100%;
+  background-color: rgba(190, 140, 110, .9);
+  height: 20px;
 
-    margin-left: 2px;
-    margin-right: 3px;
+  margin-left: 2px;
+  margin-right: 3px;
 
-    margin-top: 5px;
-    margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 
-    box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
-    background-color: #1a1a1a;
+  opacity: 0.8;
 
-    border-radius: 6px;
-    padding: 5px;
-    text-align: left;
-    overflow: hidden;
-    position: relative;
-    display: block;
-    white-space: nowrap;
+  background-color: #1a1a1a;
+
+  border-radius: 6px;
+  padding: 5px;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .loading-bar {
-    width: 0%;
-    height: 20px;
-    border-radius: 2px;
+  width: 0%;
+  height: 20px;
+  border-radius: 3px;
 
-    background-size: 30px 30px;      
-    background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-    animation: animate-stripes 3s linear infinite;
+  background-size: 30px 30px;      
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  animation: animate-stripes 3s linear infinite;
 
-    display: none;
-
-    transition: width 0.3s;
-    transition-timing-function: ease-out;
+  transition: width 0.3s;
+  transition-timing-function: ease-out;
 }
 
 .bgcolor-first {
-    background-color: #f56b48; 
+  background-color: #ff5f38;
 }
 
 .bgcolor-second {
-    background-color: #eb649c;
+  background-color: #6b52da;
 }
 
 .bgcolor-third {
-    background-color: #57abd1;
+  background-color: #299fbd;
 }
 
 .bgcolor-fourth {
-    background-color: #59af3f;
+  background-color: #1ea346;
 }
 
 .color-first, .color-second, .color-third, .color-fourth {
-    color: #fcfcfc;
+  opacity: 0.8;
+  color: #ffffff;
 }
 
 @keyframes animate-stripes {
-    0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+  0% {background-position: 0 0;} 100% {background-position: 60px 0;}
 }

@@ -7,8 +7,8 @@
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <div id="background"></div>   
-    <div id="player" class="player">
+    <div id="background"></div>
+    <div id="player" class="player"></div>
     <script>
         let playlistCode = "PLBjSgi2mD7sdoUMKsVUrRVfneJSDwPCqm", // Exemple: https://www.youtube.com/watch?v=RAY2SjsOQE4==>|&list=PLBjSgi2mD7sdoUMKsVUrRVfneJSDwPCqm|<==
         playlistVideoCount = 5
@@ -44,12 +44,13 @@
         </div>
             <div id="log" class="log"></div>
             <div id="debug" class="log log-top-right"></div>
+            <img src="img/logo.png" class="logo" width="128" height="128" alt="logo">
             <div class="loading-container">
                 <div class ="loading-labels">
-                    <div id="INIT_BEFORE_MAP_LOADED-label" class="color-first"></div>
-                    <div id="MAP-label" class="color-second"></div>
-                    <div id="INIT_AFTER_MAP_LOADED-label" class="color-third"></div>
-                    <div id="INIT_SESSION-label" class="color-fourth"></div>
+                    <div id="INIT_BEFORE_MAP_LOADED-label" class="color-first">Before map</div>
+                    <div id="MAP-label" class="color-second">Map</div>
+                    <div id="INIT_AFTER_MAP_LOADED-label" class="color-third">After map</div>
+                    <div id="INIT_SESSION-label" class="color-fourth">Session</div>
                 </div>
                 <div class="loading-bar-container">
                     <div id="INIT_BEFORE_MAP_LOADED-bar" class="loading-bar bgcolor-first"></div>
@@ -89,8 +90,8 @@
     let currentProgress = [0.0, 0.0, 0.0, 0.0];
     let currentLoadingCount = 0;
 
-    let minScale = 1.00
-    let maxScale = 1.0
+    let minScale = 1.03
+    let maxScale = 1.20
     let diffScale = maxScale - minScale
     let backgroundPositionEnd = [0,0];
 
@@ -112,7 +113,7 @@
         }
     }
 
-    const totalWidth = 99.1;
+    let totalWidth = 99.1;
     let progressPositions = [];
     let progressMaxLengths = [];
     progressPositions[0] = 0.0;
