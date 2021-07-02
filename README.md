@@ -1,8 +1,7 @@
 # FiveM-Loadingscreen
 NUI Loading screen with loading bar, logs & YouTube vidéo background
 
-![Screenshot_1](https://user-images.githubusercontent.com/36775882/124135094-c6741780-da83-11eb-903a-9af01ba24cd7.png)
-
+![Preview](https://user-images.githubusercontent.com/36775882/124247527-4355ce80-db22-11eb-8540-26db8f16d37d.png)
 ## Demo website
 - https://nevylish.github.io/FiveM-Loadingscreen | <b>Enable full screen</b> (F11)
 
