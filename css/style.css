@@ -31,7 +31,7 @@ body {
 }
 
 .log {
-  color: rgba(255, 255, 255);
+  color: #fff;
   position: absolute;
   left: 20px;
   top: 20px;
@@ -65,24 +65,18 @@ body {
   left: 5%;
   right: 5%;
   bottom: 3%;
-
   z-index: 5;
-
   color: #fff;
-
   font-family: Arial;
 }
 
 .loading-labels {
   width: 100%;
   height: 20px;
-
   margin-left: 2px;
   margin-right: 3px;
-
   margin-top: 5px;
   margin-bottom: 12px;
-
   padding: 4.2px;
   text-align: center;
   display: inline;
@@ -100,17 +94,12 @@ body {
   width: 100%;
   background-color: rgba(190, 140, 110, .9);
   height: 20px;
-
   margin-left: 2px;
   margin-right: 3px;
-
   margin-top: 5px;
   margin-bottom: 5px;
-
   opacity: 0.8;
-
   background-color: #1a1a1a;
-
   border-radius: 6px;
   padding: 5px;
   text-align: left;
@@ -121,11 +110,9 @@ body {
   width: 0%;
   height: 20px;
   border-radius: 3px;
-
   background-size: 30px 30px;      
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   animation: animate-stripes 3s linear infinite;
-
   transition: width 0.3s;
   transition-timing-function: ease-out;
 }
@@ -148,9 +135,14 @@ body {
 
 .color-first, .color-second, .color-third, .color-fourth {
   opacity: 0.8;
-  color: #ffffff;
+  color: #fff;
 }
 
 @keyframes animate-stripes {
-  0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 60px 0;
+  }
 }
