@@ -1,5 +1,9 @@
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:700italic,800,700,300,400&subset=latin,latin-ext");
 
+*::selection {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+}
+
 html, body {
   height: 100%;
 }
@@ -70,11 +74,11 @@ body {
 .loading-labels {
   width: 100%;
   height: 20px;
-  margin-left: 2px;
+  margin-left: -4px;
   margin-right: 3px;
   margin-top: 5px;
   margin-bottom: 12px;
-  padding: 4.2px;
+  padding: 4.1px;
   text-align: center;
   display: inline;
   white-space: nowrap;
@@ -91,7 +95,7 @@ body {
   width: 100%;
   background-color: rgba(190, 140, 110, .9);
   height: 20px;
-  margin-left: 2px;
+  margin-left: -5px;
   margin-right: 3px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -106,10 +110,10 @@ body {
 .loading-bar {
   width: 0%;
   height: 20px;
-  border-radius: 3px;
-  background-size: 30px 30px;      
+  border-radius: 4.2px;
+  background-size: 28px 28px;      
   background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 2s linear infinite;
   transition: width 0.3s;
   transition-timing-function: ease-out;
 }
@@ -144,6 +148,6 @@ body {
   }
 
   100% {
-    background-position: 60px 0;
+    background-position: 56px 0;
   }
 }
