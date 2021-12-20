@@ -18,8 +18,8 @@
         let firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         function onYouTubeIframeAPIReady() {
-            let numPl = Math.floor((Math.random() * playlistVideoCount + 1));
-            let player = new YT.Player("player", {
+            let numPl = Math.floor((Math.random() * playlistVideoCount + 1)),
+                player = new YT.Player("player", {
                 width: '100%',
                 playerVars: {
                     index: numPl,
@@ -76,31 +76,31 @@
     }
 
     const technicalNames = ["INIT_BEFORE_MAP_LOADED", "MAP", "INIT_AFTER_MAP_LOADED", "INIT_SESSION"];
-    let currentLoadingStage = 0;
-    let loadingWeights = [1.3/10, 4.2/10, 1.5/10, 3/10];
+    let currentLoadingStage = 0,
+        loadingWeights = [1.3/10, 4.2/10, 1.5/10, 3/10];
     
     if (!window.invokeNative) {
         loadingWeights[3] = 47.5/10
     }
 
-    let loadingTotals = [70, 70, 70, 220];
-    let registeredTotals = [0, 0, 0, 0];
-    let stageVisible = [false, false, false, false];
+    let loadingTotals = [70, 70, 70, 220],
+        registeredTotals = [0, 0, 0, 0],
+        stageVisible = [false, false, false, false],
 
-    let currentProgress = [0.0, 0.0, 0.0, 0.0];
-    let currentLoadingCount = 0;
+    let currentProgress = [0.0, 0.0, 0.0, 0.0],
+        currentLoadingCount = 0;
 
-    let minScale = 1.03
-    let maxScale = 1.20
-    let diffScale = maxScale - minScale
-    let backgroundPositionEnd = [0,0];
+    let minScale = 1.03,
+        maxScale = 1.20,
+        diffScale = maxScale - minScale,
+        backgroundPositionEnd = [0,0];
 
     function doProgress(stage) {
         let idx = technicalNames.indexOf(stage);
-        if(idx >= 0) {
+        if (idx >= 0) {
             registeredTotals[idx]++;
-            if(idx > currentLoadingStage) {
-                while(currentLoadingStage < idx) {
+            if (idx > currentLoadingStage) {
+                while (currentLoadingStage < idx) {
                     currentProgress[currentLoadingStage] = 1.0;
                     currentLoadingStage++;
                 }
@@ -113,9 +113,9 @@
         }
     }
 
-    let totalWidth = 99.1;
-    let progressPositions = [];
-    let progressMaxLengths = [];
+    let totalWidth = 99.1,
+        progressPositions = [],
+        progressMaxLengths = [],
     progressPositions[0] = 0.0;
 
     let i = 0;
