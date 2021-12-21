@@ -97,10 +97,10 @@
 
     function doProgress(stage) {
         let idx = technicalNames.indexOf(stage);
-        if (idx >= 0) {
+        if(idx >= 0) {
             registeredTotals[idx]++;
-            if (idx > currentLoadingStage) {
-                while (currentLoadingStage < idx) {
+            if(idx > currentLoadingStage) {
+                while(currentLoadingStage < idx) {
                     currentProgress[currentLoadingStage] = 1.0;
                     currentLoadingStage++;
                 }
