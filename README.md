@@ -10,7 +10,7 @@ NUI Loading screen with loading bar, logs & YouTube vidéo background
 
 ## Installation
 
-- [Download Source Code](https://github.com/Nevylish/FiveM-Loadingscreen/archive/refs/heads/master.zip)
+- [Download Ressource](https://github.com/Nevylish/FiveM-Loadingscreen/releases/download/v1/FiveM-Loadingscreen.zip)
 - Unzip folder and paste into /resources directory
 - Add `start FiveM-Loadingscreen` to your server.cfg
 
