@@ -1,86 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
     <title>FiveM-Loadingscreen</title>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <div id="background"></div>
-    <div id="player" class="player"></div>
-    <script>
-        let playlistCode = "PLBjSgi2mD7sdoUMKsVUrRVfneJSDwPCqm", // Exemple: https://www.youtube.com/watch?v=RAY2SjsOQE4==>|&list=PLBjSgi2mD7sdoUMKsVUrRVfneJSDwPCqm|<==
-        playlistVideoCount = 5 // Change to the number of videos in your playlist
+<div id="background"></div>
+<div class="player" id="player"></div>
+<script>
+    let playlistCode = "PLH7XXfQcRj-vsJou9ErSd-PKahpOxIVyE", // Exemple: https://www.youtube.com/watch?v=RAY2SjsOQE4==>|&list=PLBjSgi2mD7sdoUMKsVUrRVfneJSDwPCqm|<==
+        playlistVideoCount = 11 // Change to the number of videos in your playlist
 
-        let tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        let firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        function onYouTubeIframeAPIReady() {
-            let numPl = Math.floor((Math.random() * playlistVideoCount + 1));
-            let player = new YT.Player("player", {
-                width: '100%',
-                playerVars: {
-                    index: numPl,
-                    autoplay: 1,
-                    frameborder: 0,
-                    controls: 0,
-                    fs: 0,
-                    iv_load_policy: 3,
-                    modestbranding: 0,
-                    showinfo: 0,
-                    listType: 'playlist',
-                    list: playlistCode,
-                },
-                events: {
-                    'onReady': function(event) {
-                        event.target.setShuffle({'shufflePlaylist': true});
-                    }
+    let tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    let firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+        let numPl = Math.floor((Math.random() * playlistVideoCount + 1));
+        let player = new YT.Player("player", {
+            width: '100%',
+            playerVars: {
+                index: numPl - 1,
+                autoplay: 1,
+                frameborder: 0,
+                controls: 0,
+                fs: 0,
+                iv_load_policy: 3,
+                modestbranding: 0,
+                showinfo: 0,
+                listType: 'playlist',
+                list: playlistCode,
+            },
+            events: {
+                'onReady': function (event) {
+                    event.target.setShuffle({'shufflePlaylist': true});
                 }
-            });
-        }
-    </script>
-        </div>
-            <div id="log" class="log"></div>
-            <div id="debug" class="log log-top-right"></div>
-            <img src="img/logo.png" class="logo" width="128" height="128" alt="logo">
-            <div class="loading-container">
-                <div class ="loading-labels">
-                    <div id="INIT_BEFORE_MAP_LOADED-label" class="color-first">Before map</div>
-                    <div id="MAP-label" class="color-second">Map</div>
-                    <div id="INIT_AFTER_MAP_LOADED-label" class="color-third">After map</div>
-                    <div id="INIT_SESSION-label" class="color-fourth">Session</div>
-                </div>
-                <div class="loading-bar-container">
-                    <div id="INIT_BEFORE_MAP_LOADED-bar" class="loading-bar bgcolor-first"></div>
-                    <div id="MAP-bar" class="loading-bar bgcolor-second"></div>
-                    <div id="INIT_AFTER_MAP_LOADED-bar" class="loading-bar bgcolor-third"></div>
-                    <div id="INIT_SESSION-bar" class="loading-bar bgcolor-fourth"></div>
-                </div>
-            </div>
-        </div>
-   </div>
+            }
+        });
+    }
+</script>
+<div class="log" id="log"></div>
+<div class="log log-top-right" id="debug"></div>
+<img alt="logo" class="logo" height="128" src="img/logo.png" width="128">
+<div class="loading-container">
+    <div class="loading-labels">
+        <div class="color-first" id="INIT_BEFORE_MAP_LOADED-label">Before map</div>
+        <div class="color-second" id="MAP-label">Map</div>
+        <div class="color-third" id="INIT_AFTER_MAP_LOADED-label">After map</div>
+        <div class="color-fourth" id="INIT_SESSION-label">Session</div>
+    </div>
+    <div class="loading-bar-container">
+        <div class="loading-bar bgcolor-first" id="INIT_BEFORE_MAP_LOADED-bar"></div>
+        <div class="loading-bar bgcolor-second" id="MAP-bar"></div>
+        <div class="loading-bar bgcolor-third" id="INIT_AFTER_MAP_LOADED-bar"></div>
+        <div class="loading-bar bgcolor-fourth" id="INIT_SESSION-bar"></div>
+    </div>
+</div>
 
-   <script type="text/javascript">
+<script type="text/javascript">
     if (!String.format) {
-        String.format = function(format) {
+        String.format = function (format) {
             let args = Array.prototype.slice.call(arguments, 1);
-            return format.replace(/{(\d+)}/g, function(match, number) { 
-              return typeof args[number] != 'undefined'
-                ? args[number] 
-                : match
-              ;
+            return format.replace(/{(\d+)}/g, function (match, number) {
+                return typeof args[number] != 'undefined'
+                    ? args[number]
+                    : match
+                    ;
             });
         };
     }
 
     const technicalNames = ["INIT_BEFORE_MAP_LOADED", "MAP", "INIT_AFTER_MAP_LOADED", "INIT_SESSION"];
     let currentLoadingStage = 0;
-    let loadingWeights = [1.3/10, 4.2/10, 1.5/10, 3/10];
-    
+    let loadingWeights = [1.3 / 10, 4.2 / 10, 1.5 / 10, 3 / 10];
+
     if (!window.invokeNative) {
-        loadingWeights[3] = 47.5/10
+        loadingWeights[3] = 47.5 / 10
     }
 
     let loadingTotals = [70, 70, 70, 220];
@@ -89,26 +87,25 @@
 
     let currentProgress = [0.0, 0.0, 0.0, 0.0];
     let currentLoadingCount = 0;
-       
+
     let minScale = 1.03
     let maxScale = 1.20
     let diffScale = maxScale - minScale
-    let backgroundPositionEnd = [0,0];
+    let backgroundPositionEnd = [0, 0];
 
     function doProgress(stage) {
         let idx = technicalNames.indexOf(stage);
-        if(idx >= 0) {
+        if (idx >= 0) {
             registeredTotals[idx]++;
-            if(idx > currentLoadingStage) {
-                while(currentLoadingStage < idx) {
+            if (idx > currentLoadingStage) {
+                while (currentLoadingStage < idx) {
                     currentProgress[currentLoadingStage] = 1.0;
                     currentLoadingStage++;
                 }
                 currentLoadingCount = 1;
-            }
-            else
+            } else
                 currentLoadingCount++;
-            currentProgress[currentLoadingStage] = Math.min(currentLoadingCount/loadingTotals[idx], 1.0);
+            currentProgress[currentLoadingStage] = Math.min(currentLoadingCount / loadingTotals[idx], 1.0);
             updateProgress();
         }
     }
@@ -119,17 +116,17 @@
     progressPositions[0] = 0.0;
 
     let i = 0;
-    while(i < currentProgress.length) {
+    while (i < currentProgress.length) {
         progressMaxLengths[i] = loadingWeights[i] * totalWidth;
-        progressPositions[i+1] = progressPositions[i] + progressMaxLengths[i];
+        progressPositions[i + 1] = progressPositions[i] + progressMaxLengths[i];
         i++;
     }
 
     function updateBackground() {
         let i = 0;
         currentProgressWeightedSum = 0;
-        while(i < currentProgress.length) {
-            currentProgressWeightedSum += currentProgress[i]*loadingWeights[i];
+        while (i < currentProgress.length) {
+            currentProgressWeightedSum += currentProgress[i] * loadingWeights[i];
             i++;
         }
         document.querySelector('#background').style.transform = String.format('scale({0})', minScale + diffScale * currentProgressWeightedSum);
@@ -139,15 +136,15 @@
     function updateProgress() {
         document.querySelector('#debug').innerHTML = '';
         let i = 0;
-        while(i <= currentLoadingStage) {
-            if((currentProgress[i] > 0 || !currentProgress[i-1]) && !stageVisible[i]) {
-                document.querySelector("#" + technicalNames[i]+"-label").style.display = 'inline-block';
-    
-                document.querySelector("#" + technicalNames[i]+"-bar").style.display = 'inline-block';
+        while (i <= currentLoadingStage) {
+            if ((currentProgress[i] > 0 || !currentProgress[i - 1]) && !stageVisible[i]) {
+                document.querySelector("#" + technicalNames[i] + "-label").style.display = 'inline-block';
+
+                document.querySelector("#" + technicalNames[i] + "-bar").style.display = 'inline-block';
                 stageVisible[i] = true;
             }
-            document.querySelector("#" + technicalNames[i]+"-bar").style.width = currentProgress[i]*progressMaxLengths[i] + '%';
-            document.querySelector("#" + technicalNames[i]+"-label").style.width = progressMaxLengths[i] + '%';
+            document.querySelector("#" + technicalNames[i] + "-bar").style.width = currentProgress[i] * progressMaxLengths[i] + '%';
+            document.querySelector("#" + technicalNames[i] + "-label").style.width = progressMaxLengths[i] + '%';
             document.querySelector('#debug').innerHTML += String.format('{0}: {1}<br />', technicalNames[i], currentProgress[i]);
             i++;
         }
@@ -163,12 +160,11 @@
         log: []
     };
 
-    function printLog(type, str){
-        gstate.log.push({ type: type, str: str });
+    function printLog(type, str) {
+        gstate.log.push({type: type, str: str});
     };
 
-    Array.prototype.last = function()
-    {
+    Array.prototype.last = function () {
         return this[this.length - 1];
     };
 
@@ -178,9 +174,9 @@
                 name: data.type,
                 orders: []
             });
-    
+
             printLog(1, String.format('Running {0} init functions', data.type));
-            if(data.type) doProgress(data.type);
+            if (data.type) doProgress(data.type);
         },
 
         startInitFunction2(data) {
@@ -188,9 +184,9 @@
                 name: data.type,
                 orders: []
             });
-    
+
             printLog(4, String.format('Loading {0}...', data.type));
-            if(data.type) doProgress(data.type);
+            if (data.type) doProgress(data.type);
         },
 
         startInitFunction3(data) {
@@ -198,42 +194,42 @@
                 name: data.type,
                 orders: []
             });
-    
+
             printLog(5, String.format('{0}', data.type));
-            if(data.type) doProgress(data.type);
+            if (data.type) doProgress(data.type);
         },
 
         startInitFunctionOrder(data) {
             count = data.count;
 
             printLog(1, String.format('[{0}] Running functions of order {1} ({2} total)', data.type, data.order, data.count));
-            if(data.type) doProgress(data.type);
+            if (data.type) doProgress(data.type);
         },
 
         initFunctionInvoking(data) {
             printLog(3, String.format('Invoking {0} {1} init ({2} of {3})', data.name, data.type, data.idx, count));
-            if(data.type) doProgress(data.type);
+            if (data.type) doProgress(data.type);
         },
 
         initFunctionInvoked(data) {
-            if(data.type) doProgress(data.type);
+            if (data.type) doProgress(data.type);
         },
 
         endInitFunction(data) {
             printLog(1, String.format('Done running {0} init functions', data.type));
-            if(data.type) doProgress(data.type);
+            if (data.type) doProgress(data.type);
         },
 
         startDataFileEntries(data) {
             count = data.count;
             printLog(1, 'Loading map');
-            if(data.type) doProgress(data.type);
+            if (data.type) doProgress(data.type);
         },
 
         onDataFileEntry(data) {
             printLog(3, String.format('Loading {0}', data.name));
             doProgress(data.type);
-            if(data.type) doProgress(data.type);
+            if (data.type) doProgress(data.type);
         },
 
         endDataFileEntries() {
@@ -249,91 +245,100 @@
         }
     };
 
-    setInterval(function(){document.querySelector('#log').innerHTML = gstate.log.slice(-5).map(function(e){return String.format("[{0}] {1}", e.type, e.str)}).join('<br />');}, 50);
-    
-    window.addEventListener('message', function(e) {
-        (handlers[e.data.eventName] || function() {})(e.data);
+    setInterval(function () {
+        document.querySelector('#log').innerHTML = gstate.log.slice(-5).map(function (e) {
+            return String.format("[{0}] {1}", e.type, e.str)
+        }).join('<br />');
+    }, 50);
+
+    window.addEventListener('message', function (e) {
+        (handlers[e.data.eventName] || function () {
+        })(e.data);
     });
 
     if (!window.invokeNative) {
 
-    let newType = function newType(name) {
-        return function () {
-            return handlers.startInitFunction({ type: name });
+        let newType = function newType(name) {
+            return function () {
+                return handlers.startInitFunction({type: name});
+            };
+        }, newType2 = function newType(name) {
+            return function () {
+                return handlers.startInitFunction2({type: name});
+            };
+        }, newType3 = function newType(name) {
+            return function () {
+                return handlers.startInitFunction3({type: name});
+            };
+        }, newOrder = function newOrder(name, idx, count) {
+            return function () {
+                return handlers.startInitFunctionOrder({type: name, order: idx, count: count});
+            };
+        }, newInvoke = function newInvoke(name, func, i) {
+            return function () {
+                handlers.initFunctionInvoking({type: name, name: func, idx: i});
+                handlers.initFunctionInvoked({type: name});
+            };
+        }, startEntries = function startEntries(count) {
+            return function () {
+                return handlers.startDataFileEntries({count: count});
+            };
+        }, addEntry = function addEntry() {
+            return function () {
+                return handlers.onDataFileEntry({name: 'meow', isNew: true});
+            };
+        }, stopEntries = function stopEntries() {
+            return function () {
+                return handlers.endDataFileEntries({});
+            };
+        }, newTypeWithOrder = function newTypeWithOrder(name, count) {
+            return function () {
+                newType(name)();
+                newOrder(name, 1, count)();
+            };
         };
-    }, newType2 = function newType(name) {
-        return function () {
-            return handlers.startInitFunction2({ type: name });
-        };
-    }, newType3 = function newType(name) {
-        return function () {
-            return handlers.startInitFunction3({ type: name });
-        };
-    }, newOrder = function newOrder(name, idx, count) {
-        return function () {
-            return handlers.startInitFunctionOrder({ type: name, order: idx, count: count });
-        };
-    }, newInvoke = function newInvoke(name, func, i) {
-        return function () {
-            handlers.initFunctionInvoking({ type: name, name: func, idx: i });handlers.initFunctionInvoked({ type: name });
-        };
-    }, startEntries = function startEntries(count) {
-        return function () {
-            return handlers.startDataFileEntries({ count: count });
-        };
-    }, addEntry = function addEntry() {
-        return function () {
-            return handlers.onDataFileEntry({ name: 'meow', isNew: true });
-        };
-    }, stopEntries = function stopEntries() {
-        return function () {
-            return handlers.endDataFileEntries({});
-        };
-    }, newTypeWithOrder = function newTypeWithOrder(name, count) {
-        return function () {
-            newType(name)();newOrder(name, 1, count)();
-        };
-    };
 
-    const demoFuncs = [
-        newTypeWithOrder('INIT_BEFORE_MAP_LOADED', 3),
-        newInvoke('INIT_BEFORE_MAP_LOADED', 'meow1', 1),
-        newInvoke('INIT_BEFORE_MAP_LOADED', 'meow2', 2),
-        newInvoke('INIT_BEFORE_MAP_LOADED', 'meow3', 3),
-        newTypeWithOrder('MAP', 11),
-        newInvoke('MAP', 'meow1', 1),
-        newInvoke('MAP', 'meow2', 2),
-        newInvoke('MAP', 'meow3', 3),
-        newInvoke('MAP', 'meow4', 4),
-        newInvoke('MAP', 'meow5', 5),
-        newInvoke('MAP', 'meow6', 6),
-        newInvoke('MAP', 'meow7', 7),
-        newInvoke('MAP', 'meow8', 8),
-        newInvoke('MAP', 'meow9', 9),
-        newInvoke('MAP', 'meow10', 10),
-        newInvoke('MAP', 'meow11', 11),
-        newTypeWithOrder('INIT_AFTER_MAP_LOADED', 7),
-        newInvoke('INIT_AFTER_MAP_LOADED', 'meow1', 1),
-        newInvoke('INIT_AFTER_MAP_LOADED', 'meow2', 2),
-        newInvoke('INIT_AFTER_MAP_LOADED', 'meow3', 3),
-        newInvoke('INIT_AFTER_MAP_LOADED', 'meow4', 4),
-        newInvoke('INIT_AFTER_MAP_LOADED', 'meow5', 5),
-        newInvoke('INIT_AFTER_MAP_LOADED', 'meow6', 6),
-        newInvoke('INIT_AFTER_MAP_LOADED', 'meow7', 7),
-        newTypeWithOrder('INIT_SESSION', 5),
-        newInvoke('INIT_SESSION', 'meow1', 1),
-        newInvoke('INIT_SESSION', 'meow2', 2),
-        newInvoke('INIT_SESSION', 'meow3', 3),
-        newInvoke('INIT_SESSION', 'meow4', 4),
-        newInvoke('INIT_SESSION', 'meow5', 5),
-        newTypeWithOrder('INIT_SESSION', 3),
-        newType3('-- <b>ENABLE FULL SCREEN (F11)</b> --'),
-        newType3('<b>Repository: https://github.com/Nevylish/FiveM-Loadingscreen</b>'),
-        newType3('<b>Demo website: https://nevylish.github.io/FiveM-Loadingscreen/</b>'),
-    ];
+        const demoFuncs = [
+            newTypeWithOrder('INIT_BEFORE_MAP_LOADED', 3),
+            newInvoke('INIT_BEFORE_MAP_LOADED', 'meow1', 1),
+            newInvoke('INIT_BEFORE_MAP_LOADED', 'meow2', 2),
+            newInvoke('INIT_BEFORE_MAP_LOADED', 'meow3', 3),
+            newTypeWithOrder('MAP', 11),
+            newInvoke('MAP', 'meow1', 1),
+            newInvoke('MAP', 'meow2', 2),
+            newInvoke('MAP', 'meow3', 3),
+            newInvoke('MAP', 'meow4', 4),
+            newInvoke('MAP', 'meow5', 5),
+            newInvoke('MAP', 'meow6', 6),
+            newInvoke('MAP', 'meow7', 7),
+            newInvoke('MAP', 'meow8', 8),
+            newInvoke('MAP', 'meow9', 9),
+            newInvoke('MAP', 'meow10', 10),
+            newInvoke('MAP', 'meow11', 11),
+            newTypeWithOrder('INIT_AFTER_MAP_LOADED', 7),
+            newInvoke('INIT_AFTER_MAP_LOADED', 'meow1', 1),
+            newInvoke('INIT_AFTER_MAP_LOADED', 'meow2', 2),
+            newInvoke('INIT_AFTER_MAP_LOADED', 'meow3', 3),
+            newInvoke('INIT_AFTER_MAP_LOADED', 'meow4', 4),
+            newInvoke('INIT_AFTER_MAP_LOADED', 'meow5', 5),
+            newInvoke('INIT_AFTER_MAP_LOADED', 'meow6', 6),
+            newInvoke('INIT_AFTER_MAP_LOADED', 'meow7', 7),
+            newTypeWithOrder('INIT_SESSION', 5),
+            newInvoke('INIT_SESSION', 'meow1', 1),
+            newInvoke('INIT_SESSION', 'meow2', 2),
+            newInvoke('INIT_SESSION', 'meow3', 3),
+            newInvoke('INIT_SESSION', 'meow4', 4),
+            newInvoke('INIT_SESSION', 'meow5', 5),
+            newTypeWithOrder('INIT_SESSION', 3),
+            newType3('────────── <b>ENABLE FULL SCREEN (F11)</b> ──────────'),
+            newType3('<b>Repository: https://github.com/Nevylish/FiveM-Loadingscreen</b>'),
+            newType3('<b>Demo website: https://nevylish.github.io/FiveM-Loadingscreen/</b>'),
+        ];
 
-    setInterval(function(){	demoFuncs.length && demoFuncs.shift()();}, Math.random() * (400 - 200) + 200);
-    };
-    </script>
+        setInterval(function () {
+            demoFuncs.length && demoFuncs.shift()()
+        }, Math.random() * (400 - 200) + 200)
+    }
+</script>
 </body>
 </html>
